@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Audio Snipper</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!-- Custom CSS -->
+        <style>
+            #waveform {
+                height: auto;
+                width: 90vw;
+                border: 1px solid #ddd;
+                margin: 0 auto;
+            }
+
+            #fileInput {
+                display: none;
+            }
+
+            body, html, div {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="file" id="fileInput" accept=".mp3" onchange="loadAudio()">
+                    <button onclick="selectFile()">Select MP3 File</button>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <div id="waveform"></div>
+                    <div id="wave-timeline"></div>
+                </div>
+                <div id="audioControls" class="col-md-12 mt-4">
+                    <!-- Add controls for playback, snipping, saving, etc. -->
+                    <button id="playPauseBtn" onclick="togglePlayPause()">Play</button>
+                    <button onclick="stopAudio()">Stop</button>
+                    <button onclick="splitAudio()">Split</button>
+                    <button onclick="undo()">Undo</button>
+                    <button onclick="redo()">Redo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- JS Libs -->
+        <script type="text/javascript" src="/eel.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.6.0/wavesurfer.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.6.0/plugin/wavesurfer.timeline.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.6.0/plugin/wavesurfer.regions.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
